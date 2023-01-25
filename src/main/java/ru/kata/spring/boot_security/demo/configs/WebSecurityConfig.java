@@ -23,7 +23,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")   //эта строка, если на страницу юзера можно админа впускать админа без роли юзера.
                 .antMatchers("/user/**").hasRole("USER")   //эта строка, если на страницу юзера можно впускать админа, только если у него есть роль юзер.
                 .anyRequest().authenticated()
                 .and()
@@ -32,10 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/");
     }
 
-
     /* Пароли кодируются и раскодируются*/
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

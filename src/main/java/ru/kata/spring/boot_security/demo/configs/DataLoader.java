@@ -24,14 +24,14 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         User cat = new User("Кот", "Матроскин", 9, "cat", "cat");
-        User dog = new User("Пес", "Барбоскин", 12, "dog","dog");
+        User dog = new User("Пес", "Барбоскин", 12, "dog", "dog");
         User parrot = new User("Попугай", "Сильвер", 150, "parrot", "parrot");
         Roles admin = new Roles("ROLE_ADMIN");
         Roles user = new Roles("ROLE_USER");
 
         cat.setRoles(new HashSet<>(Set.of(admin)));
         dog.setRoles(new HashSet<>(Set.of(user)));
-        parrot.setRoles(new HashSet<>(Set.of(admin,user)));
+        parrot.setRoles(new HashSet<>(Set.of(admin, user)));
 
         userService.addRoles(admin);
         userService.addRoles(user);
